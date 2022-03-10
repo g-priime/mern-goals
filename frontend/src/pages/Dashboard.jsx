@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { uesNavigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Dashboard() {
