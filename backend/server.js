@@ -11,8 +11,7 @@ connectDB();
 const app = express();
 
 const cors = require("cors");
-//const whitelist = ["http://localhost:3000"];
-const whitelist = ["https://mernapplevon.herokuapp.com"];
+const whitelist = ["http://localhost:3000"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
