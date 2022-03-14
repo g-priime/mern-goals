@@ -10,6 +10,7 @@ connectDB();
 
 const app = express();
 
+/*
 const cors = require("cors");
 const whitelist = ["http://localhost:3000"];
 const corsOptions = {
@@ -23,6 +24,7 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
+*/
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
