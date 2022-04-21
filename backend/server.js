@@ -10,6 +10,7 @@ connectDB();
 
 const app = express();
 
+const multer  = require('multer')
 /*
 const cors = require("cors");
 const whitelist = ["http://localhost:3000"];
@@ -26,6 +27,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 */
+app.use(multer({ dest: 'uploads/' }).single('avatar'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
