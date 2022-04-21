@@ -2,6 +2,9 @@ const asyncHandler = require("express-async-handler");
 
 const Item = require("../models/itemModel");
 
+const multer  = require('multer')
+var fs = require("fs");
+
 // @desc    Get items
 // @route   GET /api/items
 // @access  Private
@@ -15,8 +18,10 @@ const getItems = asyncHandler(async (req, res) => {
 // @route   POST /api/items
 // @access  Private
 const setItem = asyncHandler(async (req, res) => {
+    const upload = multer({ dest: 'uploads/' }).single(req.file)
+
   const item = await Item.create({
-    img: { data: "./IMG_20140930_035059.jpg", contentType: "jpeg" },
+    img: { data: fs.readFileSync(req.file.filename), contentType: "jpeg" },
   });
 
   res.status(200).json(item);
