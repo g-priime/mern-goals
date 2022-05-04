@@ -11,6 +11,7 @@ const goalSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add a text value"],
     },
+    img: { data: Buffer, contentType: String },
   },
   {
     timestamps: true,
