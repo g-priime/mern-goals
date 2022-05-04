@@ -2,6 +2,12 @@ import { useDispatch } from "react-redux";
 import { deleteGoal } from "../features/goals/goalSlice";
 
 //const imgUrl = "data:image/jpeg;base64," + BinaryToBase64(goal.img);
+function arrayBufferToBase64(buffer) {
+  var binary = '';
+  var bytes = [].slice.call(new Uint8Array(buffer));
+  bytes.forEach((b) => binary += String.fromCharCode(b));
+  return window.btoa(binary);
+};
 
 function GoalItem({ goal }) {
   const dispatch = useDispatch();
@@ -11,7 +17,7 @@ function GoalItem({ goal }) {
       <div>{new Date(goal.createdAt).toLocaleString("en-US")}</div>
       <div>
         {goal.img.data.data.length > 0 ? (
-          <img src={`data:image/jpeg;base64,${goal.img.data.data}`} alt="" />
+          <img src={`data:image/jpeg;base64,${arrayBufferToBase64(goal.img.data.data)}`} alt="" />
         ) : (
           <>No image</>
         )}
