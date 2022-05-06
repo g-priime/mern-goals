@@ -11,6 +11,7 @@ const createGoal = async (goalData, token) => {
     },
   };
 
+  console.log(goalData.img)
   const response = await axios.post(API_URL, goalData, config);
 
   return response.data;

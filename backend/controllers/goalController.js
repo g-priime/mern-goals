@@ -22,7 +22,13 @@ const setGoal = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please add a text field");
   }
-
+console.log(req.body.img)
+/*
+  if (!req.body.img) {
+    res.status(400);
+    throw new Error("Please add an image");
+  }
+*/
   const goal = await Goal.create({
     text: req.body.text,
     user: req.user.id,
