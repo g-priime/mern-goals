@@ -8,10 +8,11 @@ const createGoal = async (goalData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data; boundary=<calculated when request is sent>",
     },
   };
 
-  console.log(goalData.img)
+  console.log(goalData.avatar)
   const response = await axios.post(API_URL, goalData, config);
 
   return response.data;

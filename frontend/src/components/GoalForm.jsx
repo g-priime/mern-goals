@@ -26,7 +26,7 @@ function GoalForm() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createGoal({ text, img: file }));
+    dispatch(createGoal({ text, avatar: file }));
     setText("");
   };
 
