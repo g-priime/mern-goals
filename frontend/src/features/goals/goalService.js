@@ -1,4 +1,5 @@
 import axios from "axios";
+var bodyFormData = new FormData();
 
 const API_URL = "/api/goals/";
 //const API_URL = "http://localhost:5000/api/goals/";
@@ -12,8 +13,11 @@ const createGoal = async (goalData, token) => {
     },
   };
 
+  bodyFormData.append('text', goalData.text);
+  bodyFormData.append('avatar', goalData.avatar);
+
   console.log(goalData.avatar)
-  const response = await axios.post(API_URL, goalData, config);
+  const response = await axios.post(API_URL, bodyFormData, config);
 
   return response.data;
 };
