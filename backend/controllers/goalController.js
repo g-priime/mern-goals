@@ -22,18 +22,24 @@ const setGoal = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please add a text field");
   }
-console.log(req.body.img)
-/*
-  if (!req.body.img) {
+  //console.log(req.body)
+  /*
+  if (!req.file.path) {
     res.status(400);
     throw new Error("Please add an image");
   }
 */
-  const goal = await Goal.create({
-    text: req.body.text,
-    user: req.user.id,
-    img: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
-  });
+
+  let goal;
+  try {
+    goal = await Goal.create({
+      text: req.body.text,
+      user: req.user.id,
+      img: { data: fs.readFileSync(req.file.path), contentType: "jpeg" },
+    });
+  } catch (error) {
+    throw new Error("Please add an image");
+  }
 
   res.status(200).json(goal);
 });
